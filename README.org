@@ -11,17 +11,18 @@
       maven-s3-wagon does), and
    2. That supports private S3 repos (which maven-s3-wagon does).
 ** Sooo, why did you fork it again?
-   The way you publish to a private S3 repo with maven-s3-wagon is by
-   configuring it to use a private ACL in your ~/.m2/settings.xml.  As
-   far as I can tell, there is no way to do this with leiningen
-   (patches welcome!).  My fork uses a private ACL as its default ACL.
+   As far as I can tell, maven-s3-wagon doesn't actually support using
+   multi-factor authentication except if you're running maven on an
+   EC2 node.  In addition to pulling in your access key and secret key
+   from the environment, my fork also pulls in your session token from
+   the environment, but maybe I should just let you go check out the
+   [[http://github.com/pjstadig/maven-s3-wagon/][README]] on that fork.
 
-   Also, as far as I can tell, maven-s3-wagon doesn't actually support
-   using multi-factor authentication except if you're running maven on
-   an EC2 node.  In addition to pulling in your access key and secret
-   key from the environment, my fork also pulls in your session token
-   from the environment, but maybe I should just let you go check out
-   the [[http://github.com/pjstadig/maven-s3-wagon/][README]] on that fork.
+   Also, the way you publish to a private S3 repo with maven-s3-wagon
+   is by configuring it to use a private ACL in your
+   ~/.m2/settings.xml.  As far as I can tell, there is no way to do
+   this with leiningen (patches welcome!).  My fork uses a private ACL
+   as its default ACL.
 ** OK, so how do I use it?
    Add it to your project.clj as a plugin and define your repository:
    
