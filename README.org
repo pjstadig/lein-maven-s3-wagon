@@ -23,22 +23,15 @@
    from the environment, but maybe I should just let you go check out
    the [[http://github.com/pjstadig/maven-s3-wagon/][README]] on that fork.
 ** OK, so how do I use it?
-   Add it to your project.clj as a plugin:
-   
-   #+BEGIN_SRC clojure
-     (defproject my-project "0.1.0-SNAPSHOT"
-       ...
-       :plugins [[lein-maven-s3-wagon "0.2.0"]]
-       ...)
-   #+END_SRC
-
-   Define your repository:
+   Add it to your project.clj as a plugin and define your repository:
    
    #+BEGIN_SRC clojure
      (defproject my-project "0.1.0-SNAPSHOT"
        ...
        :deploy-repositories [["my-private-repo" {:url "s3://my-maven-repo/releases/"
                                                  :username "bogus" :password "bogus"}]]
+       ...
+       :plugins [[lein-maven-s3-wagon "0.2.0"]]
        ...)
    #+END_SRC
 
