@@ -1,4 +1,4 @@
-(defproject lein-maven-s3-wagon "0.2.1"
+(defproject lein-maven-s3-wagon "0.2.2"
   :description "A leiningen plugin for publishing to a private S3
   maven repository."
   :url "http://github.com/pjstadig/lein-maven-s3-wagon/"
