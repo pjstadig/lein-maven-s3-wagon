@@ -29,28 +29,29 @@
      (defproject my-project "0.1.0-SNAPSHOT"
        ...
        :deploy-repositories [["my-private-repo" {:url "s3://my-maven-repo/releases/"
-                                                 :username "bogus" :password "bogus"}]]
+                                                 :username "AWS ACCESS KEY ID"
+                                                 :password "AWS SECRET ACCESS KEY"}]]
        ...
-       :plugins [[lein-maven-s3-wagon "0.2.0"]]
+       :plugins [[lein-maven-s3-wagon "0.2.3"]]
        ...)
    #+END_SRC
 
    Then you can publish your artifact to S3 using:
    
    : lein deploy my-private-repo
-** What's this "bogus" stuff?
-   leiningen expects you to either specify your credentials in your
-   project.clj or specify them in ~/.lein/credentials.clj.gpg.  It
-   does not have a concept of pulling credentials from the
-   environment, so if you want maven-s3-wagon to pull credentials from
-   the environment, then you need to provide some bogus credentials
-   /that will be ignored/.
-   
-   If you do not want maven-s3-wagon to pull credentials from the
-   environment you can provide your access key as ~:username~ and
-   secret key as ~:password~ in your project.clj or in your
-   ~/.lein/credentials.clj.gpg, but in this case multi-factor
-   authentication will not work.
+** Do I have to have my AWS creds in the project.clj?
+   Absolutely not!  Like any other repo, you can specify your
+   credentials in your project.clj or specify them in
+   ~/.lein/credentials.clj.gpg.  You can also use keywords with the
+   'env' namespace (like :env/aws_access_key_id to have the
+   credentials pulled from the environment).
+
+   Regardless of where the access key and secret key are pulled from,
+   your session token for multi-factor authentication will always be
+   pulled from the AWS_SECURITY_TOKEN environment variable.  This
+   environment variable name is compatible with the [[http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html][AWS command line
+   interface
+   (http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)]]
 ** License
   : Copyright © 2014 Paul Stadig. All rights reserved.
   : 
