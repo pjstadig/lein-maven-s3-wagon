@@ -4,5 +4,6 @@
   :url "http://github.com/pjstadig/lein-maven-s3-wagon/"
   :license {:name "Mozilla Public License, v. 2.0"
             :url "http://mozilla.org/MPL/2.0/"}
-  :dependencies [[pjstadig/maven-s3-wagon "1.3.3"]]
+  :dependencies [[joda-time "2.2"]
+                 [pjstadig/maven-s3-wagon "1.3.4" :exclusions [joda-time]]]
   :eval-in :leiningen)
