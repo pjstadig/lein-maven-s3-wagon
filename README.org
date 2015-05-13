@@ -32,7 +32,7 @@
                                                  :username "AWS ACCESS KEY ID"
                                                  :password "AWS SECRET ACCESS KEY"}]]
        ...
-       :plugins [[lein-maven-s3-wagon "0.2.3"]]
+       :plugins [[lein-maven-s3-wagon "0.2.4"]]
        ...)
    #+END_SRC
 
